@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameConfig" load_steps=2 format=3 uid="uid://npuef6ju13px"]
+
+[ext_resource type="Script" uid="uid://b1fosssuhblkv" path="res://Game/game_config.gd" id="1_kwe2s"]
+
+[resource]
+script = ExtResource("1_kwe2s")
+field_length = 10
+field_length_variance = 0
+min_puddle_depth = 1
+max_puddle_depth = 6
+metadata/_custom_type_script = "uid://b1fosssuhblkv"

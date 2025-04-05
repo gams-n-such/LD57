@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgu7wb3s0sxid"]
+
+[ext_resource type="PackedScene" uid="uid://bb4s0145ine4j" path="res://Game/game_camera.tscn" id="1_od3ee"]
+[ext_resource type="PackedScene" uid="uid://bi0cusq5d1qmt" path="res://GameObjects/playing_field.tscn" id="2_os1do"]
+[ext_resource type="PackedScene" uid="uid://co54uci26vu6m" path="res://Player/player_character.tscn" id="3_os1do"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GameCamera" parent="." instance=ExtResource("1_od3ee")]
+position = Vector2(180, 320)
+
+[node name="PlayingField" parent="." instance=ExtResource("2_os1do")]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_os1do")]

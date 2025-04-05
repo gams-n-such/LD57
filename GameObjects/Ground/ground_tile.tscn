@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dac4rhmiaexe6"]
+
+[ext_resource type="Texture2D" uid="uid://b21vxkoybc8y" path="res://GameObjects/Ground/hex_green_even_border.svg" id="1_0cc4k"]
+
+[node name="GroundTile" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0cc4k")

@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://col582vtgrfp8"]
+
+[ext_resource type="PackedScene" uid="uid://dac4rhmiaexe6" path="res://GameObjects/Ground/ground_tile.tscn" id="1_xl7r6"]
+[ext_resource type="PackedScene" uid="uid://8enofghpv04l" path="res://GameObjects/Water/water_tile.tscn" id="2_d0oco"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oi7xc"]
+resource_name = "Ground"
+scenes/1/scene = ExtResource("1_xl7r6")
+scenes/2/scene = ExtResource("2_d0oco")
+
+[resource]
+tile_shape = 3
+sources/0 = SubResource("TileSetScenesCollectionSource_oi7xc")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://uudchu2hekif"]
+
+[ext_resource type="Script" uid="uid://8r3sqqds2sec" path="res://GameObjects/Bamboo/bamboo_segment.gd" id="1_swevm"]
+[ext_resource type="Texture2D" uid="uid://dr6y624wvxjtn" path="res://GameObjects/Bamboo/bamboo_placeholder.tres" id="1_wbhw6"]
+
+[node name="BambooSegment" type="Sprite2D"]
+texture = ExtResource("1_wbhw6")
+offset = Vector2(0, -16)
+script = ExtResource("1_swevm")

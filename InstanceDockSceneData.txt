@@ -1,1 +1,6 @@
-[]
+[{
+"name": "LD57",
+"scenes": [{
+&"scene": "res://GameObjects/Bamboo/bamboo_stalk.tscn"
+}]
+}]

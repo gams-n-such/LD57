@@ -1,0 +1,10 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dyp4lc2wgkjyu"]
+
+[ext_resource type="PackedScene" uid="uid://bor73s04or1nm" path="res://GameObjects/Bamboo/bamboo_tile.tscn" id="1_0pdy3"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0mltj"]
+scenes/2/scene = ExtResource("1_0pdy3")
+
+[resource]
+tile_size = Vector2i(4, 16)
+sources/0 = SubResource("TileSetScenesCollectionSource_0mltj")

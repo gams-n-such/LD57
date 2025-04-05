@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b18ju06gl2k3g"]
+
+[ext_resource type="Script" uid="uid://cw5ykokglypik" path="res://GameObjects/Bamboo/bamboo_stalk.gd" id="1_un1gt"]
+[ext_resource type="TileSet" uid="uid://dyp4lc2wgkjyu" path="res://GameObjects/Bamboo/bamboo_tileset.tres" id="2_qsqbg"]
+
+[node name="BambooStalk" type="Node2D"]
+script = ExtResource("1_un1gt")
+
+[node name="BambooTiles" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 2, 0)
+tile_set = ExtResource("2_qsqbg")

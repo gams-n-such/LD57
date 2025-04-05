@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bxryxkwpjk6ub"]
+
+[ext_resource type="FontFile" uid="uid://cefd7twd0rdpm" path="res://UI/Fonts/shanghai.ttf" id="1_fqmdt"]
+
+[resource]
+font = ExtResource("1_fqmdt")
+font_size = 48
+font_color = Color(0.436, 1, 0.28, 1)
+outline_size = 2
+outline_color = Color(0, 0.64, 0, 1)

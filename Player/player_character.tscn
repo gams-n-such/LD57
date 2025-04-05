@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://co54uci26vu6m"]
+
+[ext_resource type="Script" uid="uid://dh6vtm41gqoi1" path="res://Player/player_character.gd" id="1_5cwa8"]
+[ext_resource type="Script" uid="uid://5wvpxty0uvut" path="res://Player/StateMachines/idle_player_state.gd" id="2_5vbj4"]
+[ext_resource type="Texture2D" uid="uid://djotvrwa88rjt" path="res://icon.svg" id="2_a5bt4"]
+[ext_resource type="Script" uid="uid://cmo5n6t4g2sel" path="res://Core/StateMachine/state_machine.gd" id="2_qyuka"]
+[ext_resource type="Script" uid="uid://c1uaqgbj5i382" path="res://Player/StateMachines/walking_player_state.gd" id="4_lfdof"]
+[ext_resource type="Script" uid="uid://cate0eqy81auy" path="res://Player/StateMachines/climbing_player_state.gd" id="5_lfdof"]
+[ext_resource type="Script" uid="uid://qb8327xv7nv6" path="res://Player/StateMachines/chopping_player_state.gd" id="6_tvpqd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l8h54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a5bt4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_5cwa8")
+
+[node name="PlayerStateMachines" type="Node" parent="." node_paths=PackedStringArray("INITIAL_STATE")]
+script = ExtResource("2_qyuka")
+INITIAL_STATE = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachines"]
+script = ExtResource("2_5vbj4")
+
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachines"]
+script = ExtResource("4_lfdof")
+
+[node name="ClimbingPlayerState" type="Node" parent="PlayerStateMachines"]
+script = ExtResource("5_lfdof")
+
+[node name="ChoppingPlayerState" type="Node" parent="PlayerStateMachines"]
+script = ExtResource("6_tvpqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4ntmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_l8h54")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
