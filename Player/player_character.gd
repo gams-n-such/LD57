@@ -75,3 +75,12 @@ func get_faced_bamboo() -> BambooStalk:
 	return (bamboo_detector.get_collider(0) as StaticBody2D).get_parent()
 
 #endregion
+
+#region Climbing
+
+var climbed_stalk : BambooStalk = null
+var grounded : bool:
+	get:
+		return climbed_stalk == null
+
+#endregion

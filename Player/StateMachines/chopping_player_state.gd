@@ -6,27 +6,19 @@ extends PlayerMovementState
 # TODO: chopping logic
 
 @export var chop_timer : Timer
-var climbed_stalk : BambooStalk = null
-var grounded : bool:
-	get:
-		return climbed_stalk == null
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
-	if prev_state is ClimbingPlayerState:
-		climbed_stalk = (prev_state as ClimbingPlayerState).stalk
-	else:
-		climbed_stalk = null
 	chop_timer.start()
 	await chop_timer.timeout
-	if climbed_stalk:
-		var new_item : BambooItem = climbed_stalk.chop_at_position(Player.global_position)
+	if Player.climbed_stalk:
+		var new_item : BambooItem = Player.climbed_stalk.chop_at_position(Player.global_position)
 		Player.inventory.add_bamboo(new_item)
 		request_transition("ClimbingPlayerState")
 	else:
 		var stalk : BambooStalk = Player.get_faced_bamboo()
 		if stalk:
-			var new_item : BambooItem = climbed_stalk.chop_from_ground()
+			var new_item : BambooItem = stalk.chop_from_ground()
 			Player.inventory.add_bamboo(new_item)
 		request_transition("IdlePlayerState")
 

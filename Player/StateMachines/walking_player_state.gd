@@ -19,12 +19,20 @@ func exit(next_state : State) -> void:
 
 # TODO: use _process/_physics_process + process mode?
 func update(delta: float) -> void:
-	super.update(delta)
 	if Input.is_action_just_pressed("chop"):
 		request_transition("ChoppingPlayerState")
 	elif Input.is_action_just_pressed("jump"):
 		if Player.is_facing_a_bamboo():
+			Player.climbed_stalk = Player.get_faced_bamboo()
 			request_transition("ClimbingPlayerState")
+	else:
+		super.update(delta)
+
+func physics_update(delta: float) -> void:
+	super.physics_update(delta)
+
+func movement_update(delta : float) -> void:
+	super.movement_update(delta)
 	var move_input := Player.get_move_vector()
 	if not move_input:
 		request_transition("IdlePlayerState")
@@ -32,9 +40,3 @@ func update(delta: float) -> void:
 		Player.velocity = move_input * speed
 		Player.face_towards(move_input)
 		Player.move_and_slide()
-
-func physics_update(delta: float) -> void:
-	super.physics_update(delta)
-
-func movement_update(delta : float) -> void:
-	super.movement_update(delta)

@@ -21,18 +21,6 @@ var segments_above_water : int:
 	get:
 		return length - length_underwater
 
-var choppable_segments : int:
-	get:
-		if is_in_water():
-			return segments_above_water
-		else:
-			return length
-
-var choppable_top_segments : int:
-	get:
-		# "-1" because this is only used when chopping from climb state
-		return min(0, choppable_segments - 1)
-
 @onready var tilemap : TileMapLayer = %BambooTiles
 
 func _ready() -> void:
@@ -44,8 +32,35 @@ func rebuild_stalk() -> void:
 	for height in range(1, length + 1):
 		tilemap.set_cell(Vector2i.UP * height, 0, Vector2i.ZERO, 2)
 
+#region Climbing
+
+var min_climbing_y : float:
+	get:
+		return get_segment_climbing_y(length_underwater + 1)
+
+var max_climbing_y : float:
+	get:
+		return get_segment_climbing_y(length)
+
+func get_segment_climbing_y(segment_idx : int) -> float:
+	return tilemap.position.y - get_segment_size().y * (-0.5 + segment_idx)
+
+#endregion
+
 
 #region Chopping
+
+var choppable_segments : int:
+	get:
+		if is_in_water():
+			return segments_above_water
+		else:
+			return length
+
+var choppable_top_segments : int:
+	get:
+		# "-1" because this is only used when chopping from climb state
+		return min(0, choppable_segments - 1)
 
 func chop_from_ground() -> BambooItem:
 	assert(not is_in_water())
