@@ -84,3 +84,9 @@ var grounded : bool:
 		return climbed_stalk == null
 
 #endregion
+
+#region Jumping
+
+var selected_bamboo_item : BambooItem = null
+
+#endregion

@@ -54,8 +54,9 @@ script = ExtResource("4_lfdof")
 [node name="ClimbingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_lfdof")
 
-[node name="ChoppingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="ChoppingPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("chop_timer")]
 script = ExtResource("6_tvpqd")
+chop_timer = NodePath("../../ChopTimer")
 
 [node name="AimingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_nnnpx")
