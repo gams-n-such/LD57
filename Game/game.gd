@@ -10,6 +10,7 @@ var custom_config : GameConfig
 
 var player : PlayerCharacter
 var field : PlayingField
+var camera : GameCamera
 
 func is_in_gameplay() -> bool:
 	return field != null

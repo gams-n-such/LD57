@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://bb4s0145ine4j"]
+[gd_scene load_steps=2 format=3 uid="uid://bb4s0145ine4j"]
+
+[ext_resource type="Script" uid="uid://ct8foxigaohki" path="res://Game/game_camera.gd" id="1_sjohs"]
 
 [node name="GameCamera" type="Camera2D"]
+limit_left = 0
+limit_top = -200
+limit_right = 360
+drag_vertical_enabled = true
+drag_top_margin = 0.6
+drag_bottom_margin = 0.6
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("1_sjohs")
