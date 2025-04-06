@@ -42,10 +42,13 @@ enabled=PackedStringArray("res://addons/InstanceDock/plugin.cfg", "res://addons/
 [file_customization]
 
 folder_colors={
-"res://GameObjects/Bamboo/": "green",
-"res://GameObjects/Ground/": "teal",
+"res://GameObjects/Bamboo/": "teal",
+"res://GameObjects/Ground/": "gray",
 "res://GameObjects/Water/": "blue",
-"res://Player/": "pink"
+"res://Gameplay/": "orange",
+"res://Menu/": "green",
+"res://Player/": "pink",
+"res://UI/": "green"
 }
 
 [input]
