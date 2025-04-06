@@ -87,6 +87,6 @@ var grounded : bool:
 
 #region Jumping
 
-var selected_bamboo_item : BambooItem = null
+var jump_target : Vector2 = Vector2.ZERO
 
 #endregion

@@ -24,7 +24,8 @@ func update(delta: float) -> void:
 	elif Input.is_action_just_pressed("jump"):
 		if Player.is_facing_a_bamboo():
 			Player.climbed_stalk = Player.get_faced_bamboo()
-			request_transition("ClimbingPlayerState")
+			Player.jump_target = Player.climbed_stalk.get_climbing_bottom()
+			request_transition("JumpingPlayerState")
 	else:
 		super.update(delta)
 

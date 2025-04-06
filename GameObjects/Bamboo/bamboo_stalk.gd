@@ -4,6 +4,17 @@ extends Node2D
 
 # TODO: bamboo texture
 
+@onready var tilemap : TileMapLayer = %BambooTiles
+@onready var trigger : StaticBody2D = %Trigger
+
+func _ready() -> void:
+	rebuild_stalk()
+
+func rebuild_stalk() -> void:
+	tilemap.clear()
+	for height in range(length_underwater + 1, length + 1):
+		tilemap.set_cell(Vector2i.UP * height, 0, Vector2i.ZERO, 2)
+
 @export var length : int = 1:
 	get:
 		return length
@@ -11,6 +22,8 @@ extends Node2D
 		length = new_length
 		if is_inside_tree() and Engine.is_editor_hint():
 			rebuild_stalk()
+
+#region Water
 
 @export var length_underwater : int = 0
 
@@ -21,17 +34,15 @@ var segments_above_water : int:
 	get:
 		return length - length_underwater
 
-@onready var tilemap : TileMapLayer = %BambooTiles
-@onready var trigger : StaticBody2D = %Trigger
+func submerge(depth : int) -> void:
+	submerge_instant(depth)
 
-func _ready() -> void:
-	rebuild_stalk()
-	pass
+func submerge_instant(depth : int) -> void:
+	assert(depth - 1)
+	length_underwater = depth
+	erase_segments(0, length_underwater)
 
-func rebuild_stalk() -> void:
-	tilemap.clear()
-	for height in range(1, length + 1):
-		tilemap.set_cell(Vector2i.UP * height, 0, Vector2i.ZERO, 2)
+#endregion
 
 #region Climbing
 
@@ -45,6 +56,12 @@ var max_climbing_y : float:
 
 func get_segment_climbing_y(segment_idx : int) -> float:
 	return tilemap.position.y - get_segment_size().y * (-0.5 + segment_idx)
+
+func get_climbing_position(climb_y : float) -> Vector2:
+	return to_global(Vector2.DOWN * climb_y)
+
+func get_climbing_bottom() -> Vector2:
+	return get_climbing_position(min_climbing_y)
 
 #endregion
 
@@ -97,18 +114,12 @@ func chop_from_top(chop_length : int = 1) -> BambooItem:
 func chop_stalk(new_length : int) -> void:
 	if new_length < 1:
 		trigger.collision_layer = 0
-	clear_top_tiles(length - new_length)
+	erase_segments(new_length + 1, length)
 	length = new_length
 	# TODO: await chopping VFX
 	#await get_tree().create_timer(2).timeout
 	if new_length < 1:
 		queue_free()
-
-func clear_top_tiles(chop_length : int) -> void:
-	chop_length = min(chop_length, length)
-	for segment_idx in range(length - chop_length + 1, length + 1):
-		print(Vector2i.UP * segment_idx)
-		tilemap.erase_cell(Vector2i.UP * segment_idx)
 
 #endregion
 
@@ -116,5 +127,12 @@ func clear_top_tiles(chop_length : int) -> void:
 
 func get_segment_size() -> Vector2i:
 	return tilemap.tile_set.tile_size
+
+func erase_segments(start_idx : int, end_idx : int) -> void:
+	for segment_idx in range(start_idx, end_idx + 1):
+		erase_segment(segment_idx)
+
+func erase_segment(segment_idx : int) -> void:
+	tilemap.erase_cell(Vector2i.UP * segment_idx)
 
 #endregion

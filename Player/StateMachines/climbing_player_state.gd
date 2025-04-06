@@ -20,7 +20,7 @@ var current_height : float:
 		return Player.global_position.y - stalk_root.y
 	set(new_height):
 		var clamped_height : float = clamp(new_height, stalk.max_climbing_y, stalk.min_climbing_y)
-		Player.global_position = Vector2(stalk_root.x, stalk_root.y + clamped_height)
+		Player.global_position = stalk.get_climbing_position(clamped_height)
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
@@ -33,6 +33,10 @@ func exit(next_state : State) -> void:
 func update(delta: float) -> void:
 	if Input.is_action_just_pressed("chop"):
 		request_transition("ChoppingPlayerState")
+	elif Input.is_action_just_pressed("jump"):
+		Player.jump_target = stalk_root
+		Player.climbed_stalk = null
+		request_transition("JumpingPlayerState")
 	else:
 		super.update(delta)
 

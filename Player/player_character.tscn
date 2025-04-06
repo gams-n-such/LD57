@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://co54uci26vu6m"]
+[gd_scene load_steps=15 format=3 uid="uid://co54uci26vu6m"]
 
 [ext_resource type="Script" uid="uid://dh6vtm41gqoi1" path="res://Player/player_character.gd" id="1_5cwa8"]
 [ext_resource type="Script" uid="uid://5wvpxty0uvut" path="res://Player/StateMachines/idle_player_state.gd" id="2_5vbj4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cate0eqy81auy" path="res://Player/StateMachines/climbing_player_state.gd" id="5_lfdof"]
 [ext_resource type="Script" uid="uid://qb8327xv7nv6" path="res://Player/StateMachines/chopping_player_state.gd" id="6_tvpqd"]
 [ext_resource type="Script" uid="uid://c4plj1ev8jdpy" path="res://Player/StateMachines/aiming_player_state.gd" id="7_nnnpx"]
+[ext_resource type="Script" uid="uid://dyug67brqmpvx" path="res://Player/StateMachines/jumping_player_state.gd" id="9_5j3b7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l8h54"]
 animations = [{
@@ -30,11 +31,16 @@ size = Vector2(10, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnnpx"]
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
+z_index = 5
 floor_constant_speed = true
 script = ExtResource("1_5cwa8")
 
 [node name="ChopTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="Inventory" parent="." instance=ExtResource("2_36np3")]
@@ -50,6 +56,7 @@ script = ExtResource("2_5vbj4")
 
 [node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("4_lfdof")
+speed = 200.0
 
 [node name="ClimbingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_lfdof")
@@ -60,6 +67,10 @@ chop_timer = NodePath("../../ChopTimer")
 
 [node name="AimingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_nnnpx")
+
+[node name="JumpingPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("jump_timer")]
+script = ExtResource("9_5j3b7")
+jump_timer = NodePath("../../JumpTimer")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
