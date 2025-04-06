@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=4 uid="uid://dqc53ltejx3ti"]
+
+[ext_resource type="TileSet" uid="uid://col582vtgrfp8" path="res://Gameplay/field_tileset.tres" id="1_le6sm"]
+[ext_resource type="PackedScene" uid="uid://co54uci26vu6m" path="res://Player/player_character.tscn" id="2_niu7t"]
+[ext_resource type="PackedScene" uid="uid://b18ju06gl2k3g" path="res://GameObjects/Bamboo/bamboo_stalk.tscn" id="3_vufpd"]
+
+[sub_resource type="Gradient" id="Gradient_oykuo"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0.270588, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rw8vf"]
+gradient = SubResource("Gradient_oykuo")
+
+[node name="LevelMockup" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAgAAAAMAAAAAAAAAAgABAAMAAAAAAAAAAgACAAIAAAAAAAAAAgABAAIAAAAAAAAAAgADAAIAAAAAAAAAAgAEAAIAAAAAAAAAAgADAAMAAAAAAAAAAgACAAMAAAAAAAAAAgADAAQAAAAAAAAAAgACAAQAAAAAAAAAAgAAAAQAAAAAAAAAAgABAAQAAAAAAAAAAgAEAAQAAAAAAAAAAgADAAUAAAAAAAAAAgADAAYAAAAAAAAAAgACAAUAAAAAAAAAAQACAAYAAAAAAAAAAgABAAUAAAAAAAAAAgABAAYAAAAAAAAAAgAAAAUAAAAAAAAAAgAAAAYAAAAAAAAAAgAAAAcAAAAAAAAAAgABAAcAAAAAAAAAAgAEAAYAAAAAAAAAAgADAAcAAAAAAAAAAgADAAgAAAAAAAAAAgACAAcAAAAAAAAAAgABAAgAAAAAAAAAAgAAAAkAAAAAAAAAAgACAAgAAAAAAAAAAgADAAkAAAAAAAAAAgAEAAgAAAAAAAAAAQAAAAgAAAAAAAAAAgABAAkAAAAAAAAAAgACAAkAAAAAAAAAAgAEAAoAAAAAAAAAAgAEAAkAAAAAAAAAAgADAAoAAAAAAAAAAgACAAoAAAAAAAAAAgABAAoAAAAAAAAAAgAAAAoAAAAAAAAAAgAAAAsAAAAAAAAAAgABAAsAAAAAAAAAAgACAAsAAAAAAAAAAQADAAsAAAAAAAAAAgAEAAsAAAAAAAAAAgAAAAwAAAAAAAAAAQABAAwAAAAAAAAAAgACAAwAAAAAAAAAAgADAAwAAAAAAAAAAgAEAAwAAAAAAAAAAgD//wMAAAAAAAAAAgD//wUAAAAAAAAAAgD//wcAAAAAAAAAAgD//wkAAAAAAAAAAgD//wsAAAAAAAAAAgD//w0AAAAAAAAAAgAEAAcAAAAAAAAAAgAEAAUAAAAAAAAAAgAEAAMAAAAAAAAAAgAEAA0AAAAAAAAAAgADAA0AAAAAAAAAAgACAA0AAAAAAAAAAgABAA0AAAAAAAAAAgAAAA0AAAAAAAAAAgAAAA4AAAAAAAAAAgD//wwAAAAAAAAAAgD//woAAAAAAAAAAgD//wgAAAAAAAAAAgD//wYAAAAAAAAAAgD//wQAAAAAAAAAAgD//wIAAAAAAAAAAgAFAAIAAAAAAAAAAgAFAAQAAAAAAAAAAgAFAAYAAAAAAAAAAgAFAAgAAAAAAAAAAgAFAAoAAAAAAAAAAgAFAAwAAAAAAAAAAgAFAA4AAAAAAAAAAgAEAA4AAAAAAAAAAgADAA4AAAAAAAAAAgACAA8AAAAAAAAAAgACAA4AAAAAAAAAAgABAA8AAAAAAAAAAgABAA4AAAAAAAAAAgAAAA8AAAAAAAAAAgD//w4AAAAAAAAAAgD//w8AAAAAAAAAAgADAA8AAAAAAAAAAgAEAA8AAAAAAAAAAgA=")
+tile_set = ExtResource("1_le6sm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(179, 64.9375)
+scale = Vector2(1.40625, 128.125)
+texture = SubResource("GradientTexture1D_rw8vf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(191, 933)
+scale = Vector2(1.69922, 148.125)
+texture = SubResource("GradientTexture1D_rw8vf")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_niu7t")]
+position = Vector2(185, 92)
+
+[node name="BambooStalk" parent="." instance=ExtResource("3_vufpd")]
+position = Vector2(74, 314)
+scale = Vector2(3, 3)
+length = 3
+
+[node name="BambooStalk2" parent="." instance=ExtResource("3_vufpd")]
+position = Vector2(329, 466)
+scale = Vector2(3, 3)
+length = 5
