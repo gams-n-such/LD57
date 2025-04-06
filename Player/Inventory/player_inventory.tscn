@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfwcvm3x8yucb"]
+
+[ext_resource type="Script" uid="uid://dsfyaxxxvkd2l" path="res://Player/Inventory/player_inventory.gd" id="1_5s430"]
+
+[node name="PlayerInventory" type="Node"]
+script = ExtResource("1_5s430")
+
+[node name="BambooBunch" type="Node" parent="."]
+unique_name_in_owner = true

@@ -8,7 +8,7 @@ var AnimPlayer : AnimationPlayer
 func _ready() -> void:
 	await owner.ready
 	Player = owner as PlayerCharacter
-	AnimPlayer = Player.ANIMATION_PLAYER
+	#AnimPlayer = Player.ANIMATION_PLAYER
 
 func update(delta: float) -> void:
 	movement_update(delta)

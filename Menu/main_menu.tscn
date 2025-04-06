@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1jl6av08m75r"]
+[gd_scene load_steps=6 format=3 uid="uid://b1jl6av08m75r"]
 
 [ext_resource type="Script" uid="uid://d1ai4kvbicr6m" path="res://Menu/main_menu.gd" id="1_sla5p"]
 [ext_resource type="LabelSettings" uid="uid://bxryxkwpjk6ub" path="res://UI/Resources/title_label_settings.tres" id="2_dtkyu"]
+[ext_resource type="PackedScene" uid="uid://dlbtkd36uapux" path="res://Menu/config_menu.tscn" id="2_ohgnh"]
 [ext_resource type="Theme" uid="uid://bdfjwaux12oi3" path="res://UI/Resources/menu_theme.tres" id="3_ohgnh"]
 
 [sub_resource type="Theme" id="Theme_fw3rq"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sla5p")
+config_screen_scene = ExtResource("2_ohgnh")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0

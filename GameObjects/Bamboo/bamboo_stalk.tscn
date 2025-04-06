@@ -1,13 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b18ju06gl2k3g"]
+[gd_scene load_steps=4 format=3 uid="uid://b18ju06gl2k3g"]
 
 [ext_resource type="Script" uid="uid://cw5ykokglypik" path="res://GameObjects/Bamboo/bamboo_stalk.gd" id="1_un1gt"]
 [ext_resource type="TileSet" uid="uid://dyp4lc2wgkjyu" path="res://GameObjects/Bamboo/bamboo_tileset.tres" id="2_qsqbg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qsqbg"]
 
 [node name="BambooStalk" type="Node2D"]
 script = ExtResource("1_un1gt")
 
 [node name="BambooTiles" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
-position = Vector2(-2, 0)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 2, 0)
+position = Vector2(-3, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0)
 tile_set = ExtResource("2_qsqbg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_qsqbg")

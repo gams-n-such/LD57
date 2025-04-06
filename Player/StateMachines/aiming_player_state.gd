@@ -1,13 +1,7 @@
-class_name ClimbingPlayerState
+class_name AimingMovementState
 extends PlayerMovementState
 
-# TODO: climbing logic
-# TODO: climbing anim
-# TODO: climbing SFX?
-
-@export var speed : float
-
-var stalk : BambooStalk = null
+# TODO: aiming logic
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)

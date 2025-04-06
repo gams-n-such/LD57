@@ -7,3 +7,7 @@ extends Node2D
 func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		Game.field = self
+
+func _exit_tree() -> void:
+	if not Engine.is_editor_hint():
+		Game.field = null

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlbtkd36uapux"]
+[gd_scene load_steps=3 format=3 uid="uid://dlbtkd36uapux"]
 
+[ext_resource type="Theme" uid="uid://bdfjwaux12oi3" path="res://UI/Resources/menu_theme.tres" id="1_l0jtq"]
 [ext_resource type="Script" uid="uid://body43gmx8761" path="res://Menu/config_menu.gd" id="1_vgn6o"]
 
 [node name="ConfigMenu" type="Control"]
@@ -9,4 +10,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_l0jtq")
 script = ExtResource("1_vgn6o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25098)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -69.0
+offset_right = 53.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="OkButton" type="Button" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Ok"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/OkButton" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
