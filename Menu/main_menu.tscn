@@ -1,12 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1jl6av08m75r"]
+[gd_scene load_steps=6 format=3 uid="uid://b1jl6av08m75r"]
 
 [ext_resource type="Script" uid="uid://d1ai4kvbicr6m" path="res://Menu/main_menu.gd" id="1_sla5p"]
-[ext_resource type="LabelSettings" uid="uid://bxryxkwpjk6ub" path="res://UI/Resources/title_label_settings.tres" id="2_dtkyu"]
 [ext_resource type="PackedScene" uid="uid://dlbtkd36uapux" path="res://Menu/config_menu.tscn" id="2_ohgnh"]
 [ext_resource type="PackedScene" uid="uid://bo6i0gd0xyju1" path="res://Menu/credits_screen.tscn" id="3_fw3rq"]
 [ext_resource type="Theme" uid="uid://bdfjwaux12oi3" path="res://UI/Resources/menu_theme.tres" id="3_ohgnh"]
-
-[sub_resource type="Theme" id="Theme_fw3rq"]
+[ext_resource type="Texture2D" uid="uid://cp0aqcx6bnneu" path="res://Menu/menu_art.jpg" id="4_fw3rq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,18 +17,11 @@ script = ExtResource("1_sla5p")
 config_screen_scene = ExtResource("2_ohgnh")
 credits_screen_scene = ExtResource("3_fw3rq")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 360.0
-offset_bottom = 109.0
-
-[node name="Label" type="Label" parent="CenterContainer"]
-texture_filter = 1
-layout_mode = 2
-theme = SubResource("Theme_fw3rq")
-text = "Bamboozled!"
-label_settings = ExtResource("2_dtkyu")
-horizontal_alignment = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_fw3rq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -39,10 +30,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -148.0
-offset_top = -237.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = -168.0
+offset_top = -217.0
+offset_right = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -60,6 +50,7 @@ text = "Tutorial"
 
 [node name="ConfigButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme = ExtResource("3_ohgnh")
 text = "Config"
