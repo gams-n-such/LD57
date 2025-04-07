@@ -10,18 +10,19 @@
 [node name="PlayingField" parent="." instance=ExtResource("2_os1do")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_os1do")]
-position = Vector2(180, 40)
+position = Vector2(186, 55)
 
 [node name="GameCamera" parent="PlayerCharacter" instance=ExtResource("1_od3ee")]
+visible = false
 
 [node name="BambooStalk" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(71, 100)
+position = Vector2(73, 92)
 length = 5
 
 [node name="BambooStalk2" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(296, 99)
+position = Vector2(180, 145)
 length = 3
 
 [node name="BambooStalk3" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(254, 41)
+position = Vector2(148, 87)
 length = 4

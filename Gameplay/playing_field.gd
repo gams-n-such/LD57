@@ -95,29 +95,22 @@ func generate_water_borders() -> void:
 
 func set_ground_cell(coords : Vector2i) -> void:
 	tilemap.set_cell(coords, 0, Vector2i.ZERO, 1)
-	#tilemap.get_cell_tile_data(coords).set_custom_data("depth", 0)
 
 func is_ground_cell(coords : Vector2i) -> bool:
 	return tilemap.get_cell_tile_data(coords).get_custom_data("depth") == 0
 
 func set_water_border_cell(coords : Vector2i) -> void:
-	# TODO: alternative visuals
-	#tilemap.set_cell(coords, 0, Vector2i.ZERO, 2)
-	#tilemap.get_cell_tile_data(coords).set_custom_data("depth", depth)
-	set_water_cell(coords, 10)
+	tilemap.set_cell(coords, 1, Vector2i.ZERO, 2)
 
 func set_water_cell(coords : Vector2i, depth : int) -> void:
-	tilemap.set_cell(coords, 0, Vector2i.ZERO, 2)
-	#tilemap.get_tile_data(coords).set_custom_data("depth", depth)
+	tilemap.set_cell(coords, 1, Vector2i.ZERO, 1)
 	puddle_depths.set(coords, depth)
 
 func is_water_cell(coords : Vector2i) -> bool:
-	#return tilemap.get_cell_tile_data(coords).get_custom_data("depth") > 0
 	return puddle_depths.has(coords)
 
 func get_water_depth(coords : Vector2i) -> int:
 	if is_water_cell(coords):
-		#return tilemap.get_cell_tile_data(coords).get_custom_data("depth")
 		return puddle_depths[coords]
 	return 0
 
