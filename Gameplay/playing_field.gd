@@ -142,12 +142,18 @@ func generate_water_row(row_idx : int) -> void:
 		set_water_cell(Vector2i(x, row_idx), 1)
 		pass
 
+var ground_spawn_chance : float = 0.08
+
+var min_depth : int = 1
+var max_depth : int = 5
+
 func generate_gameplay_row(row_idx : int) -> void:
 	var row_width : int = get_width_for_row(row_idx)
 	for x in range(row_width):
-		# TODO: random type and depth
-		set_water_cell(Vector2i(x, row_idx), 1)
-		pass
+		if randf() < ground_spawn_chance:
+			set_ground_cell(Vector2i(x, row_idx))
+		else:
+			set_water_cell(Vector2i(x, row_idx), randi_range(1, 5))
 
 func generate_water_borders() -> void:
 	for row in range(first_gameplay_row, last_gameplay_row + 1):
