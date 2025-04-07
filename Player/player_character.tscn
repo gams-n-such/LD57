@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=3 uid="uid://co54uci26vu6m"]
+[gd_scene load_steps=176 format=3 uid="uid://co54uci26vu6m"]
 
 [ext_resource type="Script" uid="uid://dh6vtm41gqoi1" path="res://Player/player_character.gd" id="1_5cwa8"]
 [ext_resource type="Script" uid="uid://5wvpxty0uvut" path="res://Player/StateMachines/idle_player_state.gd" id="2_5vbj4"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://dyug67brqmpvx" path="res://Player/StateMachines/jumping_player_state.gd" id="9_5j3b7"]
 [ext_resource type="PackedScene" uid="uid://b18ju06gl2k3g" path="res://GameObjects/Bamboo/bamboo_stalk.tscn" id="10_3yrp4"]
 [ext_resource type="Texture2D" uid="uid://ci47r72g5p3bo" path="res://Player/Animations/balance.png" id="11_dgbnd"]
+[ext_resource type="Script" uid="uid://cjk06adgbhx1b" path="res://Player/StateMachines/win_player_state.gd" id="11_emhqj"]
 [ext_resource type="Texture2D" uid="uid://bs4b8jtlubrnu" path="res://Player/Animations/walk.png" id="11_gqsy7"]
+[ext_resource type="Script" uid="uid://c68wg5skl6k31" path="res://Player/StateMachines/lose_player_state.gd" id="12_8ujlj"]
 [ext_resource type="Texture2D" uid="uid://igrdeedfxxbj" path="res://Player/Animations/chop_bamboo.png" id="12_fi8jx"]
 [ext_resource type="Texture2D" uid="uid://bkgd65tcq14gp" path="res://Player/Animations/chop_ground.png" id="13_emhqj"]
 [ext_resource type="Texture2D" uid="uid://et3rl1nhads7" path="res://Player/Animations/climb_down.png" id="14_8ujlj"]
@@ -875,7 +877,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y4hlj")
 }],
-"loop": false,
+"loop": true,
 "name": &"jumping_mid",
 "speed": 10.0
 }, {
@@ -1164,11 +1166,17 @@ script = ExtResource("9_5j3b7")
 jump_timer = NodePath("../../JumpTimer")
 bamboo_scene = ExtResource("10_3yrp4")
 
+[node name="WinPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("11_emhqj")
+
+[node name="LosePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("12_8ujlj")
+
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_l8h54")
-animation = &"balancing"
+animation = &"jumping_mid"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ntmi")
