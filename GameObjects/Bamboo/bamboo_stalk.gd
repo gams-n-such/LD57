@@ -119,6 +119,7 @@ func chop_stalk(new_length : int) -> void:
 	# TODO: await chopping VFX
 	#await get_tree().create_timer(2).timeout
 	if new_length < 1:
+		Game.field.unregister_bamboo(self)
 		queue_free()
 
 #endregion

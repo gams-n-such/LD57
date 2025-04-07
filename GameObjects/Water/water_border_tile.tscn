@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dkxkm5r2g8xds" path="res://GameObjects/Water/water_border_tile.svg" id="1_6b7ho"]
 
 [node name="WaterTile" type="Sprite2D"]
+z_index = -1
 texture_filter = 1
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("1_6b7ho")

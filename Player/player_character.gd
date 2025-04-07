@@ -66,7 +66,14 @@ func get_aim_vector() -> Vector2:
 @export var bamboo_detection_range : float = 20.0
 @onready var bamboo_detector : ShapeCast2D = %BambooDetector
 
-var selected_bamboo : BambooItem = null
+var selected_bamboo : BambooItem = null:
+	get:
+		return selected_bamboo
+	set(new_bamboo):
+		selected_bamboo = new_bamboo
+		on_bamboo_selected.emit(new_bamboo)
+
+signal on_bamboo_selected(new_bamboo : BambooItem)
 
 func update_bamboo_detector() -> void:
 	bamboo_detector.target_position = facing_vector * bamboo_detection_range
