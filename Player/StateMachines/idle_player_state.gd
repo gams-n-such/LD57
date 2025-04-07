@@ -24,6 +24,8 @@ func update(delta: float) -> void:
 			Player.climbed_stalk = Player.get_faced_bamboo()
 			Player.jump_target = Player.climbed_stalk.get_climbing_bottom()
 			request_transition("JumpingPlayerState")
+	elif Input.is_action_just_pressed("aim"):
+		request_transition("AimingPlayerState")
 	elif Player.get_move_vector():
 		request_transition("WalkingPlayerState")
 

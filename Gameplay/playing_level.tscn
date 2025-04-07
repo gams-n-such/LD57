@@ -16,13 +16,13 @@ position = Vector2(186, 55)
 visible = false
 
 [node name="BambooStalk" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(73, 92)
+position = Vector2(144, 98)
 length = 5
 
 [node name="BambooStalk2" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(180, 145)
+position = Vector2(258, 30)
 length = 3
 
 [node name="BambooStalk3" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(148, 87)
+position = Vector2(288, 99)
 length = 4

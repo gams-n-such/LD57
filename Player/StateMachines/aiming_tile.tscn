@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dtdvpm7v2co6h" path="res://Player/StateMachines/aiming_hex.svg" id="1_f0ndl"]
 
 [node name="AimingTile" type="Sprite2D"]
+z_index = 2
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("1_f0ndl")

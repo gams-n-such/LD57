@@ -33,10 +33,12 @@ func exit(next_state : State) -> void:
 func update(delta: float) -> void:
 	if Input.is_action_just_pressed("chop"):
 		request_transition("ChoppingPlayerState")
-	elif Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed("jump") and (not is_instance_valid(Player.climbed_stalk) or not Player.climbed_stalk.is_in_water()):
 		Player.jump_target = stalk_root
 		Player.climbed_stalk = null
 		request_transition("JumpingPlayerState")
+	elif Input.is_action_just_pressed("aim"):
+		request_transition("AimingPlayerState")
 	else:
 		super.update(delta)
 
