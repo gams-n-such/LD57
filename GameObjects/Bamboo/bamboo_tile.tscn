@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bor73s04or1nm"]
 
-[ext_resource type="Texture2D" uid="uid://dr6y624wvxjtn" path="res://GameObjects/Bamboo/bamboo_placeholder.tres" id="1_1g7rr"]
+[ext_resource type="Texture2D" uid="uid://d18ef3kothtx3" path="res://GameObjects/Bamboo/bamboo.png" id="1_1g7rr"]
 
 [node name="BambooTile" type="Sprite2D"]
 z_index = 3
