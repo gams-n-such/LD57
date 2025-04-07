@@ -9,9 +9,17 @@ extends Node2D
 
 var spawned_in_hand : bool = false
 var spawned_in_world : bool = false
+var initialized : bool = false
 
 func _ready() -> void:
-	rebuild_stalk()
+	if not initialized:
+		rebuild_stalk()
+		initialized = true
+	if not spawned_in_hand and not spawned_in_world:
+		var curr_cell : Vector2i = Game.field.global_to_map(global_position)
+		length_underwater = Game.field.get_water_depth(curr_cell)
+		plant_at_coords(curr_cell)
+		spawned_in_world = true
 
 func init_from_item(item : BambooItem) -> void:
 	length = item.length
@@ -66,8 +74,8 @@ func submerge_timed(depth : int, time : float) -> void:
 		submerge_instant(depth - length_underwater)
 		return
 	while length_underwater < depth:
-		submerge_instant(1)
 		await get_tree().create_timer(time / depth).timeout
+		submerge_instant(1)
 
 func submerge_instant(delta_depth : int) -> void:
 	if delta_depth < 1:
@@ -76,7 +84,7 @@ func submerge_instant(delta_depth : int) -> void:
 	length_underwater += delta_depth
 	# TODO: bottom segment
 	tilemap.set_cell(Vector2i.UP * length_underwater, 0, Vector2i.ZERO, 2)
-	tilemap.position = Vector2.DOWN * get_segment_size().y * length_underwater
+	tilemap.position = Vector2.DOWN * get_segment_size().y * (length_underwater)
 
 #endregion
 
