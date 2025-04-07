@@ -126,3 +126,21 @@ func add_bamboo_to_cell(coords : Vector2i, bamboo : BambooStalk) -> void:
 	add_child(bamboo)
 
 #endregion
+
+#region Selection
+
+@onready var interactive_tilemap : TileMapLayer = %AimingTilemap
+
+func select_cell(coords : Vector2i, clear : bool = true) -> void:
+	select_cells([coords], clear)
+
+func select_cells(coords : Array[Vector2i], clear : bool = true) -> void:
+	if clear:
+		clear_selection()
+	for cell in coords:
+		interactive_tilemap.set_cell(cell, 2, Vector2i.ZERO, 1)
+
+func clear_selection() -> void:
+	interactive_tilemap.clear()
+
+#endregion
