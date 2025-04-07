@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b70rnnjl6trbw"]
+[gd_scene load_steps=6 format=3 uid="uid://b70rnnjl6trbw"]
 
 [ext_resource type="Script" uid="uid://danjh357u0wn3" path="res://Game/game.gd" id="1_bk3v5"]
 [ext_resource type="PackedScene" uid="uid://b1jl6av08m75r" path="res://Menu/main_menu.tscn" id="2_jcm6v"]
 [ext_resource type="PackedScene" uid="uid://cgu7wb3s0sxid" path="res://Gameplay/playing_level.tscn" id="3_fwxkx"]
 [ext_resource type="PackedScene" uid="uid://dc1vhcprit5p5" path="res://Player/Inventory/UI/inventory_screen.tscn" id="4_jcm6v"]
+[ext_resource type="AudioStream" uid="uid://bqew6poaj7soq" path="res://Game/Guzheng City.mp3" id="5_fwxkx"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_bk3v5")
@@ -15,3 +16,8 @@ inventory_screen = ExtResource("4_jcm6v")
 unique_name_in_owner = true
 process_mode = 3
 layer = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fwxkx")
+volume_db = -4.0
+autoplay = true
