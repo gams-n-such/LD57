@@ -18,6 +18,7 @@ process_mode = 3
 layer = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("5_fwxkx")
 volume_db = -4.0
 autoplay = true
