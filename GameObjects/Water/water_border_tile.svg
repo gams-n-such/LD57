@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
-   sodipodi:docname="hex_darkblue_even_border.svg"
+   sodipodi:docname="water_border_tile.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="17.302019"
-     inkscape:cx="7.5713707"
+     inkscape:cx="7.6869642"
      inkscape:cy="18.205968"
      inkscape:window-width="2560"
      inkscape:window-height="1494"
@@ -41,7 +41,7 @@
      id="layer1">
     <path
        sodipodi:type="star"
-       style="fill:#003380;stroke:#003380;stroke-width:0.854419;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       style="fill:#00b4d4;stroke:#00b4d4;stroke-width:0.854419;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
        id="path7"
        inkscape:flatsided="true"
        sodipodi:sides="6"

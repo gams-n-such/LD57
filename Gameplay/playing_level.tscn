@@ -20,9 +20,9 @@ position = Vector2(144, 98)
 length = 5
 
 [node name="BambooStalk2" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(258, 30)
+position = Vector2(288, 307)
 length = 3
 
 [node name="BambooStalk3" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(288, 99)
+position = Vector2(249, 157)
 length = 4

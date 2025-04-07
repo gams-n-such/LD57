@@ -21,8 +21,6 @@ scenes/1/scene = ExtResource("3_xdt1c")
 [resource]
 tile_shape = 3
 tile_size = Vector2i(72, 72)
-custom_data_layer_0/name = "depth"
-custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetScenesCollectionSource_oi7xc")
 sources/1 = SubResource("TileSetScenesCollectionSource_1rcya")
 sources/2 = SubResource("TileSetScenesCollectionSource_xdt1c")
