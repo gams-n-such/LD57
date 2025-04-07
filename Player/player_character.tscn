@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://co54uci26vu6m"]
+[gd_scene load_steps=23 format=3 uid="uid://co54uci26vu6m"]
 
 [ext_resource type="Script" uid="uid://dh6vtm41gqoi1" path="res://Player/player_character.gd" id="1_5cwa8"]
 [ext_resource type="Script" uid="uid://5wvpxty0uvut" path="res://Player/StateMachines/idle_player_state.gd" id="2_5vbj4"]
@@ -10,6 +10,35 @@
 [ext_resource type="Script" uid="uid://qb8327xv7nv6" path="res://Player/StateMachines/chopping_player_state.gd" id="6_tvpqd"]
 [ext_resource type="Script" uid="uid://c4plj1ev8jdpy" path="res://Player/StateMachines/aiming_player_state.gd" id="7_nnnpx"]
 [ext_resource type="Script" uid="uid://dyug67brqmpvx" path="res://Player/StateMachines/jumping_player_state.gd" id="9_5j3b7"]
+[ext_resource type="Texture2D" uid="uid://bs4b8jtlubrnu" path="res://Player/Animations/walk.png" id="11_gqsy7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yrp4"]
+atlas = ExtResource("11_gqsy7")
+region = Rect2(0, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1ssd"]
+atlas = ExtResource("11_gqsy7")
+region = Rect2(31, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g61ia"]
+atlas = ExtResource("11_gqsy7")
+region = Rect2(62, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cymb5"]
+atlas = ExtResource("11_gqsy7")
+region = Rect2(93, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b46m6"]
+atlas = ExtResource("11_gqsy7")
+region = Rect2(124, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1wib"]
+atlas = ExtResource("11_gqsy7")
+region = Rect2(155, 0, 31, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl8ye"]
+atlas = ExtResource("11_gqsy7")
+region = Rect2(186, 0, 31, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l8h54"]
 animations = [{
@@ -17,9 +46,35 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_a5bt4")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yrp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1ssd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g61ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cymb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b46m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1wib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl8ye")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
@@ -32,9 +87,9 @@ size = Vector2(10, 40)
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 z_index = 5
+collision_mask = 5
 floor_constant_speed = true
 script = ExtResource("1_5cwa8")
-bamboo_detection_range = null
 
 [node name="ChopTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -75,8 +130,8 @@ jump_timer = NodePath("../../JumpTimer")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_l8h54")
+animation = &"walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ntmi")

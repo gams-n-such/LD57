@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var inventory : PlayerInventory = %Inventory
 @onready var state_machine : StateMachine = %PlayerStateMachine
+@onready var sprite : AnimatedSprite2D = %AnimatedSprite
 
 func _enter_tree() -> void:
 	Game.player = self
@@ -36,7 +37,7 @@ func flip() -> void:
 
 var facing_vector : Vector2:
 	get:
-		if flipped:
+		if not flipped:
 			return Vector2.RIGHT
 		else:
 			return Vector2.LEFT
