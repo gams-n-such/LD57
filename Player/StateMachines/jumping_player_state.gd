@@ -22,12 +22,21 @@ var peak_alpha : float
 var MAX_OVERJUMP_Y : float = 50.0
 var MAX_DIFF : float = 200.0
 
+var jumping_into_water : bool = false
+var jumping_to_bamboo : bool = false
+var cell_jump_target : Vector2i
+
 func calc_overjump() -> float:
 	return MAX_OVERJUMP_Y / MAX_DIFF * min(MAX_DIFF, abs(jump_delta_y))
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
 	assert(Player.jump_target)
+	jumping_to_bamboo = Player.climbed_stalk != null
+	var cell_jump_target : Vector2i = Game.field.global_to_map(Player.jump_target) if not jumping_to_bamboo else Game.field.global_to_map(Player.climbed_stalk.global_position)
+	jumping_into_water = not jumping_to_bamboo and Game.field.is_water_cell(cell_jump_target)
+	if jumping_into_water:
+		print("Jump into water")
 	jump_start = Player.global_position
 	peak_y = min(jump_start.y, jump_target.y) - calc_overjump()
 	peak_alpha = (1.0 + (-jump_delta_y / MAX_DIFF)) / 2.0

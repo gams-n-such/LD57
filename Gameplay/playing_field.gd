@@ -91,6 +91,9 @@ func unregister_bamboo(bamboo : BambooStalk) -> void:
 func has_bamboo_in(cell : Vector2i) -> bool:
 	return bamboos.has(cell) and is_instance_valid(bamboos[cell])
 
+func get_bamboo_in(cell : Vector2i) -> BambooStalk:
+	return bamboos[cell]
+
 func spawn_bamboo_in_cell(coords : Vector2i, length : int, compensate_depth : bool = true) -> void:
 	var new_bamboo := bamboo_scene.instantiate() as BambooStalk
 	var additional_length : int = get_water_depth(coords) if compensate_depth else 0

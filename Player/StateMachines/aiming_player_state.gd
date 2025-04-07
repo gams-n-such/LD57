@@ -44,8 +44,11 @@ func exit(next_state : State) -> void:
 func update(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if Game.field.can_player_jump_to(selected_cell, player_has_bamboo()):
+			if Game.field.has_bamboo_in(selected_cell) and Player.climbed_stalk != Game.field.get_bamboo_in(selected_cell):
+				Player.climbed_stalk = Game.field.get_bamboo_in(selected_cell)
+			else:
+				Player.climbed_stalk = null
 			# TODO: spawn bamboo
-			Player.climbed_stalk = null
 			Player.jump_target = Game.field.map_to_global(selected_cell)
 			request_transition("JumpingPlayerState")
 	elif Input.is_action_just_pressed("aim"):

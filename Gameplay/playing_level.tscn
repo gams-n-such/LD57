@@ -26,3 +26,7 @@ length = 3
 [node name="BambooStalk3" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(249, 157)
 length = 4
+
+[node name="BambooStalk4" parent="." instance=ExtResource("4_0d6fd")]
+position = Vector2(283, 91)
+length = 4
