@@ -6,9 +6,17 @@ extends Node
 @export var inventory_screen : PackedScene
 
 var player : PlayerCharacter
-var field : PlayingField
 var camera : GameCamera
-var ui_viewport : SubViewport
+@onready var ui_layer : CanvasLayer = %UILayer
+var field : PlayingField:
+	get:
+		return field
+	set(new_field):
+		if is_instance_valid(field):
+			field.on_player_entered_win_zone.disconnect(_on_player_entered_win_zone) 
+		field = new_field
+		if is_instance_valid(field):
+			field.on_player_entered_win_zone.connect(_on_player_entered_win_zone) 
 
 func is_in_gameplay() -> bool:
 	return field != null
@@ -20,6 +28,9 @@ func _ready() -> void:
 func play() -> void:
 	get_tree().change_scene_to_packed(gameplay_scene)
 
+func restart() -> void:
+	get_tree().reload_current_scene()
+
 func exit_to_title() -> void:
 	get_tree().change_scene_to_packed(main_menu_scene)
 
@@ -28,4 +39,8 @@ func set_paused(pause : bool) -> void:
 
 func open_inventory() -> void:
 	var inventory = inventory_screen.instantiate()
-	%UILayer.add_child(inventory)
+	ui_layer.add_child(inventory)
+
+func _on_player_entered_win_zone() -> void:
+	# TODO: winning
+	pass
