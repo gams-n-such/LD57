@@ -34,6 +34,7 @@ size = Vector2(10, 40)
 z_index = 5
 floor_constant_speed = true
 script = ExtResource("1_5cwa8")
+bamboo_detection_range = null
 
 [node name="ChopTimer" type="Timer" parent="."]
 wait_time = 0.5

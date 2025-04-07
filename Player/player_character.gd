@@ -15,6 +15,8 @@ func _ready() -> void:
 	update_bamboo_detector()
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("open_inventory"):
+		Game.open_inventory()
 	pass
 
 #region Facing
@@ -62,6 +64,8 @@ func get_aim_vector() -> Vector2:
 
 @export var bamboo_detection_range : float = 20.0
 @onready var bamboo_detector : ShapeCast2D = %BambooDetector
+
+var selected_bamboo : BambooItem = null
 
 func update_bamboo_detector() -> void:
 	bamboo_detector.target_position = facing_vector * bamboo_detection_range

@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://enw51vldmp24"]
+
+[ext_resource type="FontFile" uid="uid://cefd7twd0rdpm" path="res://UI/Fonts/shanghai.ttf" id="1_luym8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fktsf"]
+bg_color = Color(1, 1, 0.219608, 0.286275)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_luym8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luym8"]
+bg_color = Color(0.85098, 0.705882, 0, 0.54902)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.85098, 0.705882, 0, 0.54902)
+
+[resource]
+default_font = ExtResource("1_luym8")
+default_font_size = 24
+Button/styles/hover = SubResource("StyleBoxFlat_fktsf")
+Button/styles/normal = SubResource("StyleBoxEmpty_luym8")
+Button/styles/pressed = SubResource("StyleBoxEmpty_luym8")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_luym8")

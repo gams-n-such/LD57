@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://d10jtmdahfhmg"]
+
+[ext_resource type="Script" uid="uid://cyauidgpbodj1" path="res://Player/Inventory/UI/bamboo_item_control.gd" id="1_ixlia"]
+[ext_resource type="Theme" uid="uid://dpjbcwyinxkgv" path="res://Player/Inventory/UI/inventory_contents_theme.tres" id="1_j0b48"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hi8n3"]
+size = Vector2(48, 6)
+
+[node name="BambooItemControl" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+mouse_filter = 1
+theme = ExtResource("1_j0b48")
+script = ExtResource("1_ixlia")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99 x "
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_hi8n3")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

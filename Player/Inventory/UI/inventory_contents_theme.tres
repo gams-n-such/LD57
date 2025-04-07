@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dpjbcwyinxkgv"]
+
+[ext_resource type="FontFile" uid="uid://cefd7twd0rdpm" path="res://UI/Fonts/shanghai.ttf" id="1_bs4oe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs4oe"]
+bg_color = Color(1, 1, 0.219608, 0.286275)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bs4oe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fktsf"]
+
+[resource]
+default_font = ExtResource("1_bs4oe")
+default_font_size = 24
+Button/styles/hover = SubResource("StyleBoxFlat_bs4oe")
+Button/styles/normal = SubResource("StyleBoxEmpty_bs4oe")
+Button/styles/pressed = SubResource("StyleBoxEmpty_bs4oe")
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 4
+MarginContainer/constants/margin_right = 4
+MarginContainer/constants/margin_top = 4
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_fktsf")
