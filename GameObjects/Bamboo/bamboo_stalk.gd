@@ -16,10 +16,10 @@ func _ready() -> void:
 		rebuild_stalk()
 		initialized = true
 	if not spawned_in_hand and not spawned_in_world:
+		spawned_in_world = true
 		var curr_cell : Vector2i = Game.field.global_to_map(global_position)
 		length_underwater = Game.field.get_water_depth(curr_cell)
 		plant_at_coords(curr_cell)
-		spawned_in_world = true
 
 func init_from_item(item : BambooItem) -> void:
 	length = item.length
@@ -31,13 +31,11 @@ func rebuild_stalk() -> void:
 		tilemap.position = Vector2.DOWN * get_segment_size().y * (-0.5 + length)
 	for height in range(length_underwater + 1, length):
 		tilemap.set_cell(Vector2i.UP * height, 0, Vector2i.ZERO, 2)
-	# TODO: different bottom
 	if length_underwater > 0:
-		pass
+		tilemap.set_cell(Vector2i.UP * length, 0, Vector2i.ZERO, 4)
 	else:
-		pass
-	# TODO: different top
-	tilemap.set_cell(Vector2i.UP * length, 0, Vector2i.ZERO, 2)
+		tilemap.set_cell(Vector2i.UP * length, 0, Vector2i.ZERO, 3)
+	tilemap.set_cell(Vector2i.UP * length, 0, Vector2i.ZERO, 1)
 
 @export var length : int = 1:
 	get:
@@ -58,7 +56,7 @@ var segments_above_water : int:
 	get:
 		return length - length_underwater
 
-var plant_deviation : float = 10.0
+var plant_deviation : float = 5.0
 
 func plant_at_coords(cell : Vector2i) -> void:
 	if get_parent() != Game.field:
@@ -82,8 +80,7 @@ func submerge_instant(delta_depth : int) -> void:
 		return
 	erase_segments(length_underwater, length_underwater + delta_depth)
 	length_underwater += delta_depth
-	# TODO: bottom segment
-	tilemap.set_cell(Vector2i.UP * length_underwater, 0, Vector2i.ZERO, 2)
+	tilemap.set_cell(Vector2i.UP * length_underwater, 0, Vector2i.ZERO, 4)
 	tilemap.position = Vector2.DOWN * get_segment_size().y * (length_underwater)
 
 #endregion

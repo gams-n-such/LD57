@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4k4cwnasqm31"]
+
+[ext_resource type="Texture2D" uid="uid://dfe7y3nchh3bo" path="res://GameObjects/Bamboo/bamboo_root.png" id="1_nfhst"]
+
+[node name="BambooTile" type="Sprite2D"]
+z_index = 3
+texture = ExtResource("1_nfhst")
