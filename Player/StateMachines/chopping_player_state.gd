@@ -1,16 +1,17 @@
 class_name ChoppingMovementState
 extends PlayerMovementState
 
-# TODO: chopping anim
 # TODO: chopping SFX
-# TODO: chopping logic
 
 @export var chop_timer : Timer
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
-	chop_timer.start()
-	await chop_timer.timeout
+	if Player.climbed_stalk:
+		Player.sprite.play("chopping_bamboo")
+	else:
+		Player.sprite.play("chopping_ground")
+	await Player.sprite.animation_finished
 	if Player.climbed_stalk:
 		var new_item : BambooItem = Player.climbed_stalk.chop_at_position(Player.global_position)
 		if new_item:

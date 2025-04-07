@@ -5,8 +5,7 @@ extends PlayerMovementState
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
-	# TODO:
-	Player.sprite.play("walking")
+	Player.sprite.play("idle")
 
 func exit(next_state : State) -> void:
 	if next_state is ClimbingPlayerState:

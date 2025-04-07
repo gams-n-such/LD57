@@ -1,8 +1,6 @@
 class_name ClimbingPlayerState
 extends PlayerMovementState
 
-# TODO: climbing logic
-# TODO: climbing anim
 # TODO: climbing SFX?
 
 @export var speed : float = 75.0
@@ -50,3 +48,9 @@ func movement_update(delta : float) -> void:
 	var move_input := Player.get_move_vector()
 	if move_input:
 		current_height += move_input.y * speed * delta
+	if move_input.y > 0:
+		Player.sprite.play("climbing_down")
+	elif move_input.y < 0:
+		Player.sprite.play("climbing_up")
+	else:
+		Player.sprite.play("climbing_idle")

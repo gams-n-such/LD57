@@ -32,6 +32,7 @@ func calc_overjump() -> float:
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
+	interpolating = false
 	assert(Player.jump_target)
 	jumping_to_bamboo = Player.climbed_stalk != null
 	cell_jump_target = Game.field.global_to_map(Player.jump_target) if not jumping_to_bamboo else Game.field.global_to_map(Player.climbed_stalk.global_position)
@@ -39,13 +40,26 @@ func enter(prev_state : State) -> void:
 	jump_start = Player.global_position
 	peak_y = min(jump_start.y, jump_target.y) - calc_overjump()
 	peak_alpha = (1.0 + (-jump_delta_y / MAX_DIFF)) / 2.0
+	if prev_state is ClimbingPlayerState:
+		Player.sprite.play("jumping_start_bamboo")
+		await Player.sprite.animation_finished
+	else:
+		Player.sprite.play("jumping_start_ground")
+		await Player.sprite.animation_finished
 	jump_timer.start()
+	interpolating = true
+	Player.sprite.play("jumping_mid")
 	if jumping_into_water:
 		bamboo_coroutine()
 	await jump_timer.timeout
+	interpolating = false
 	if Player.climbed_stalk:
+		Player.sprite.play("jumping_end_bamboo")
+		await Player.sprite.animation_finished
 		request_transition("ClimbingPlayerState")
 	else:
+		Player.sprite.play("jumping_end_ground")
+		await Player.sprite.animation_finished
 		request_transition("IdlePlayerState")
 
 var spawned_bamboo : BambooStalk = null
@@ -66,10 +80,15 @@ func bamboo_coroutine() -> void:
 func exit(next_state : State) -> void:
 	Player.jump_target = Vector2.ZERO
 	spawned_bamboo = null
+	interpolating = false
 	super.exit(next_state)
+
+var interpolating : bool = false
 
 # TODO: use _process/_physics_process + process mode?
 func update(delta: float) -> void:
+	if not interpolating:
+		return
 	var curr_alpha := alpha
 	var pos_x : float = lerp(jump_start.x, jump_target.x, curr_alpha)
 	var pos_y : float = lerp(jump_start.y, peak_y, curr_alpha / peak_alpha) if curr_alpha < peak_alpha else lerp(peak_y, jump_target.y, (curr_alpha - peak_alpha) / (1.0 - peak_alpha))
