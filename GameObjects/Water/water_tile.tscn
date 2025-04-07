@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://8enofghpv04l"]
 
-[ext_resource type="Texture2D" uid="uid://5dglckeeh8fo" path="res://GameObjects/Water/hex_blue_even_border.svg" id="1_rvq0m"]
+[ext_resource type="Texture2D" uid="uid://5dglckeeh8fo" path="res://GameObjects/Water/water_tile.svg" id="1_rvq0m"]
 
 [node name="WaterTile" type="Sprite2D"]
 texture_filter = 1

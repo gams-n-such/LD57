@@ -5,16 +5,23 @@
 [ext_resource type="PackedScene" uid="uid://co54uci26vu6m" path="res://Player/player_character.tscn" id="3_os1do"]
 [ext_resource type="PackedScene" uid="uid://b18ju06gl2k3g" path="res://GameObjects/Bamboo/bamboo_stalk.tscn" id="4_0d6fd"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node"]
 
 [node name="PlayingField" parent="." instance=ExtResource("2_os1do")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_os1do")]
-position = Vector2(147, 301)
+position = Vector2(180, 40)
 
 [node name="GameCamera" parent="PlayerCharacter" instance=ExtResource("1_od3ee")]
-position = Vector2(33, 19)
 
 [node name="BambooStalk" parent="." instance=ExtResource("4_0d6fd")]
-position = Vector2(72, 309)
+position = Vector2(71, 100)
 length = 5
+
+[node name="BambooStalk2" parent="." instance=ExtResource("4_0d6fd")]
+position = Vector2(296, 99)
+length = 3
+
+[node name="BambooStalk3" parent="." instance=ExtResource("4_0d6fd")]
+position = Vector2(254, 41)
+length = 4
