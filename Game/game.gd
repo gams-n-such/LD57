@@ -4,10 +4,6 @@ extends Node
 @export var main_menu_scene : PackedScene
 @export var gameplay_scene : PackedScene
 
-@export var active_config : GameConfig
-
-var custom_config : GameConfig
-
 var player : PlayerCharacter
 var field : PlayingField
 var camera : GameCamera

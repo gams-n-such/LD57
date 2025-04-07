@@ -1,4 +1,4 @@
-class_name GameConfig
+class_name GameConfigResource
 extends Resource
 
 @export_category("Generation parameters")
