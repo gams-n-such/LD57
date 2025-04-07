@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://co54uci26vu6m"]
+[gd_scene load_steps=24 format=3 uid="uid://co54uci26vu6m"]
 
 [ext_resource type="Script" uid="uid://dh6vtm41gqoi1" path="res://Player/player_character.gd" id="1_5cwa8"]
 [ext_resource type="Script" uid="uid://5wvpxty0uvut" path="res://Player/StateMachines/idle_player_state.gd" id="2_5vbj4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://qb8327xv7nv6" path="res://Player/StateMachines/chopping_player_state.gd" id="6_tvpqd"]
 [ext_resource type="Script" uid="uid://c4plj1ev8jdpy" path="res://Player/StateMachines/aiming_player_state.gd" id="7_nnnpx"]
 [ext_resource type="Script" uid="uid://dyug67brqmpvx" path="res://Player/StateMachines/jumping_player_state.gd" id="9_5j3b7"]
+[ext_resource type="PackedScene" uid="uid://b18ju06gl2k3g" path="res://GameObjects/Bamboo/bamboo_stalk.tscn" id="10_3yrp4"]
 [ext_resource type="Texture2D" uid="uid://bs4b8jtlubrnu" path="res://Player/Animations/walk.png" id="11_gqsy7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3yrp4"]
@@ -127,6 +128,7 @@ script = ExtResource("7_nnnpx")
 [node name="JumpingPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("jump_timer")]
 script = ExtResource("9_5j3b7")
 jump_timer = NodePath("../../JumpTimer")
+bamboo_scene = ExtResource("10_3yrp4")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

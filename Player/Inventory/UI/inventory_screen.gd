@@ -31,6 +31,10 @@ func _ready() -> void:
 	for item in Game.player.inventory.get_bamboos():
 		add_item(item)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("open_inventory"):
+		queue_free()
+
 func add_item(item : BambooItem) -> void:
 	var item_control := item_control_scene.instantiate() as BambooItemControl
 	item_control.item = item
@@ -42,6 +46,7 @@ func add_item(item : BambooItem) -> void:
 func handle_item_selected(control : BambooItemControl) -> void:
 	selected_control = control
 	Game.player.selected_bamboo = control.item
+	queue_free()
 
 
 func _on_ok_button_pressed() -> void:

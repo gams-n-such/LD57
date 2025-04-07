@@ -7,7 +7,7 @@ extends Node2D
 
 @export_category("Field size")
 @export var top_walkable_row : int = -1
-@export var first_gameplay_row : int = 3
+@export var first_gameplay_row : int = 2
 @export var num_gameplay_rows : int = 10
 var last_gameplay_row : int:
 	get:
@@ -97,7 +97,7 @@ func get_bamboo_in(cell : Vector2i) -> BambooStalk:
 func spawn_bamboo_in_cell(coords : Vector2i, length : int, compensate_depth : bool = true) -> void:
 	var new_bamboo := bamboo_scene.instantiate() as BambooStalk
 	var additional_length : int = get_water_depth(coords) if compensate_depth else 0
-	new_bamboo.length = length
+	new_bamboo.length = length + additional_length
 	add_bamboo_to_cell(coords, new_bamboo)
 
 func add_bamboo_to_cell(coords : Vector2i, bamboo : BambooStalk) -> void:
@@ -120,7 +120,8 @@ func generate_gameplay_bamboo() -> void:
 	pass
 
 func generate_gameplay_field() -> void:
-	for row in range(first_gameplay_row, last_gameplay_row + 1):
+	generate_water_row(first_gameplay_row)
+	for row in range(first_gameplay_row + 1, last_gameplay_row + 1):
 		generate_gameplay_row(row)
 
 func generate_win_zone() -> void:

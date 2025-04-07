@@ -7,13 +7,29 @@ extends Node2D
 @onready var tilemap : TileMapLayer = %BambooTiles
 @onready var trigger : StaticBody2D = %Trigger
 
+var spawned_in_hand : bool = false
+var spawned_in_world : bool = false
+
 func _ready() -> void:
 	rebuild_stalk()
 
+func init_from_item(item : BambooItem) -> void:
+	length = item.length
+	spawned_in_hand = true
+
 func rebuild_stalk() -> void:
 	tilemap.clear()
-	for height in range(length_underwater + 1, length + 1):
+	if spawned_in_hand:
+		tilemap.position = Vector2.DOWN * get_segment_size().y * (-0.5 + length)
+	for height in range(length_underwater + 1, length):
 		tilemap.set_cell(Vector2i.UP * height, 0, Vector2i.ZERO, 2)
+	# TODO: different bottom
+	if length_underwater > 0:
+		pass
+	else:
+		pass
+	# TODO: different top
+	tilemap.set_cell(Vector2i.UP * length, 0, Vector2i.ZERO, 2)
 
 @export var length : int = 1:
 	get:
@@ -34,13 +50,33 @@ var segments_above_water : int:
 	get:
 		return length - length_underwater
 
-func submerge(depth : int) -> void:
-	submerge_instant(depth)
+var plant_deviation : float = 10.0
 
-func submerge_instant(depth : int) -> void:
-	assert(depth - 1)
-	length_underwater = depth
-	erase_segments(0, length_underwater)
+func plant_at_coords(cell : Vector2i) -> void:
+	if get_parent() != Game.field:
+		reparent(Game.field, true)
+	position = Game.field.to_local(Game.field.map_to_global(cell)) + Vector2(randf_range(-plant_deviation, plant_deviation), randf_range(-plant_deviation, plant_deviation))
+	tilemap.position = Vector2.DOWN * get_segment_size().y * length_underwater
+	Game.field.register_bamboo(self, cell)
+
+func submerge_timed(depth : int, time : float) -> void:
+	if depth < 1:
+		return
+	if time < 0.1:
+		submerge_instant(depth - length_underwater)
+		return
+	while length_underwater < depth:
+		submerge_instant(1)
+		await get_tree().create_timer(time / depth).timeout
+
+func submerge_instant(delta_depth : int) -> void:
+	if delta_depth < 1:
+		return
+	erase_segments(length_underwater, length_underwater + delta_depth)
+	length_underwater += delta_depth
+	# TODO: bottom segment
+	tilemap.set_cell(Vector2i.UP * length_underwater, 0, Vector2i.ZERO, 2)
+	tilemap.position = Vector2.DOWN * get_segment_size().y * length_underwater
 
 #endregion
 
