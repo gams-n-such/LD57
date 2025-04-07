@@ -8,4 +8,4 @@ func _exit_tree() -> void:
 	Game.camera = null
 
 func set_field_bottom(max_y : float) -> void:
-	limit_bottom = max_y
+	limit_bottom = floor(max_y)
