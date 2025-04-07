@@ -169,7 +169,7 @@ func set_water_cell(coords : Vector2i, depth : int) -> void:
 	puddle_depths.set(coords, depth)
 
 func is_water_cell(coords : Vector2i) -> bool:
-	return tilemap.get_cell_source_id(coords) == 2
+	return tilemap.get_cell_source_id(coords) == 1
 
 func get_water_depth(coords : Vector2i) -> int:
 	if is_water_cell(coords):
