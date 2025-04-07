@@ -145,3 +145,4 @@ aim_right={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(5.5952e-07, 0.302365, 0.0558427, 1)
