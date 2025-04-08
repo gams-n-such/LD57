@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbitlel7gjjs6"]
+
+[ext_resource type="Theme" uid="uid://veso6dv347h2" path="res://UI/Resources/credits_theme.tres" id="1_tj2si"]
+[ext_resource type="Script" uid="uid://c3oraaat615f" path="res://Menu/tutorial_screen.gd" id="2_tj2si"]
+
+[node name="TutorialScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tj2si")
+script = ExtResource("2_tj2si")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.729412)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 24.0
+offset_right = 359.0
+offset_bottom = 478.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "Climb bamboo: Z
+Chop bamboo: X
+Open inventory: C
+On bamboo: Shift to aim jump. 
+When aiming: jump with Z
+You must select a pole from
+inventory before jumping 
+into water.
+You lose if pole is shorter
+than water depth 
+(shown in aim mode)
+You win if you get
+to the other side"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -69.0
+offset_right = 103.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

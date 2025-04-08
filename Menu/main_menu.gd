@@ -15,3 +15,7 @@ func _on_config_button_pressed() -> void:
 
 func _on_credits_button_pressed() -> void:
 	add_child(credits_screen_scene.instantiate())
+
+
+func _on_tutorial_button_pressed() -> void:
+	add_child(tutorial_screen_scene.instantiate())

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1jl6av08m75r"]
+[gd_scene load_steps=7 format=3 uid="uid://b1jl6av08m75r"]
 
 [ext_resource type="Script" uid="uid://d1ai4kvbicr6m" path="res://Menu/main_menu.gd" id="1_sla5p"]
 [ext_resource type="PackedScene" uid="uid://dlbtkd36uapux" path="res://Menu/config_menu.tscn" id="2_ohgnh"]
+[ext_resource type="PackedScene" uid="uid://bbitlel7gjjs6" path="res://Menu/tutorial_screen.tscn" id="2_rw3mj"]
 [ext_resource type="PackedScene" uid="uid://bo6i0gd0xyju1" path="res://Menu/credits_screen.tscn" id="3_fw3rq"]
 [ext_resource type="Theme" uid="uid://bdfjwaux12oi3" path="res://UI/Resources/menu_theme.tres" id="3_ohgnh"]
 [ext_resource type="Texture2D" uid="uid://cp0aqcx6bnneu" path="res://Menu/menu_art.jpg" id="4_fw3rq"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sla5p")
+tutorial_screen_scene = ExtResource("2_rw3mj")
 config_screen_scene = ExtResource("2_ohgnh")
 credits_screen_scene = ExtResource("3_fw3rq")
 
@@ -62,5 +64,6 @@ theme = ExtResource("3_ohgnh")
 text = "Credits"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ConfigButton" to="." method="_on_config_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
