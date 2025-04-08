@@ -41,14 +41,20 @@ func enter(prev_state : State) -> void:
 	peak_y = min(jump_start.y, jump_target.y) - calc_overjump()
 	peak_alpha = (1.0 + (-jump_delta_y / MAX_DIFF)) / 2.0
 	if Player.was_on_stalk_pre_jump:
+		if Player.flipped:
+			Player.sprite.offset.x = 24
+		else:
+			Player.sprite.offset.x = -24
 		Player.sprite.play("jumping_start_bamboo")
 		await Player.sprite.animation_finished
 	else:
+		Player.global_position.x = Player.climbed_stalk.global_position.x + (Player.facing_vector.x * -24)
 		Player.sprite.play("jumping_start_ground")
 		await Player.sprite.animation_finished
 		request_transition("ClimbingPlayerState")
 		return
 	jump_timer.start()
+	Player.sprite.offset.x = 0
 	interpolating = true
 	Player.sprite.play("jumping_mid")
 	if jumping_into_water:
@@ -56,8 +62,14 @@ func enter(prev_state : State) -> void:
 	await jump_timer.timeout
 	interpolating = false
 	if Player.climbed_stalk:
+		Player.flip()
+		if Player.flipped:
+			Player.sprite.offset.x = -24
+		else:
+			Player.sprite.offset.x = 24
 		Player.sprite.play("jumping_end_bamboo")
 		await Player.sprite.animation_finished
+		Player.flip()
 		request_transition("ClimbingPlayerState")
 	else:
 		Player.sprite.play("jumping_end_ground")

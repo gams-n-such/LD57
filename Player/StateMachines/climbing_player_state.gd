@@ -22,10 +22,17 @@ var current_height : float:
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
+	if Player.flipped:
+		Player.sprite.offset.x = 8
+	else:
+		Player.sprite.offset.x = -4
 	current_height = current_height
 	if stalk.length_underwater > stalk.length:
 		request_transition("LosePlayerState")
 		stalk.queue_free()
+	else:
+		if stalk.segments_above_water < 1:
+			Player.sprite.play("balancing")
 
 func exit(next_state : State) -> void:
 	super.exit(next_state)
@@ -51,6 +58,8 @@ func physics_update(delta: float) -> void:
 func movement_update(delta : float) -> void:
 	super.movement_update(delta)
 	var move_input := Player.get_move_vector()
+	if stalk.segments_above_water < 1:
+		return
 	if move_input:
 		current_height += move_input.y * speed * delta
 	if move_input.y > 0:
@@ -59,5 +68,3 @@ func movement_update(delta : float) -> void:
 		Player.sprite.play("climbing_up")
 	else:
 		Player.sprite.play("climbing_idle")
-	if stalk.segments_above_water < 1:
-		Player.sprite.play("balancing")

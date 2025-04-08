@@ -5,6 +5,7 @@ extends PlayerMovementState
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
+	Player.sprite.offset = Vector2.ZERO
 	Player.sprite.play("winning")
 	await Player.sprite.animation_finished
 	Game.game_over(true)

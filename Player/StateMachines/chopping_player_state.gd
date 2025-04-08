@@ -7,11 +7,18 @@ extends PlayerMovementState
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
+	Player.sprite.offset = Vector2.ZERO
 	if Player.climbed_stalk:
+		if Player.flipped:
+			Player.sprite.offset.x = 10
+		else:
+			Player.sprite.offset.x = -10
 		Player.sprite.play("chopping_bamboo")
 	else:
 		Player.sprite.play("chopping_ground")
+	Player.sprite.offset.y = -2
 	await Player.sprite.animation_finished
+	Player.sprite.offset.y = 0
 	if Player.climbed_stalk:
 		var new_item : BambooItem = Player.climbed_stalk.chop_at_position(Player.global_position)
 		if new_item:
