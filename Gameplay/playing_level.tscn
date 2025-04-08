@@ -15,23 +15,23 @@ length = 5
 
 [node name="BambooStalk6" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(140, 299)
-length = 5
+length = 6
 
 [node name="BambooStalk8" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(71, 539)
-length = 5
+length = 7
 
 [node name="BambooStalk7" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(339, 471)
-length = 8
+length = 9
 
 [node name="BambooStalk2" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(288, 307)
-length = 3
+length = 5
 
 [node name="BambooStalk10" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(181, 374)
-length = 3
+length = 5
 
 [node name="BambooStalk3" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(249, 157)
@@ -43,11 +43,11 @@ length = 4
 
 [node name="BambooStalk5" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(49, 367)
-length = 4
+length = 6
 
 [node name="BambooStalk9" parent="." instance=ExtResource("4_0d6fd")]
 position = Vector2(243, 578)
-length = 4
+length = 7
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_os1do")]
 position = Vector2(186, 55)
