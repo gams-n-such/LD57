@@ -4,6 +4,7 @@ extends Node
 @export var main_menu_scene : PackedScene
 @export var gameplay_scene : PackedScene
 @export var inventory_screen : PackedScene
+@export var pause_menu : PackedScene
 
 @export var win_screen : PackedScene
 
@@ -41,12 +42,14 @@ func game_over(won : bool) -> void:
 func exit_to_title() -> void:
 	get_tree().change_scene_to_packed(main_menu_scene)
 
+func pause() -> void:
+	ui_layer.add_child(pause_menu.instantiate())
+
 func set_paused(pause : bool) -> void:
 	get_tree().paused = pause
 
 func open_inventory() -> void:
-	var inventory = inventory_screen.instantiate()
-	ui_layer.add_child(inventory)
+	ui_layer.add_child(inventory_screen.instantiate())
 
 func _on_player_entered_win_zone() -> void:
 	player.state_machine.request_transition_external("WinPlayerState")

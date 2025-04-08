@@ -16,7 +16,9 @@ func _ready() -> void:
 	update_bamboo_detector()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("open_inventory"):
+	if Input.is_action_just_pressed("pause"):
+		Game.pause()
+	elif Input.is_action_just_pressed("open_inventory"):
 		Game.open_inventory()
 	pass
 
