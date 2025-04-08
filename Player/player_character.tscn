@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=3 uid="uid://co54uci26vu6m"]
+[gd_scene load_steps=177 format=3 uid="uid://co54uci26vu6m"]
 
 [ext_resource type="Script" uid="uid://dh6vtm41gqoi1" path="res://Player/player_character.gd" id="1_5cwa8"]
 [ext_resource type="Script" uid="uid://5wvpxty0uvut" path="res://Player/StateMachines/idle_player_state.gd" id="2_5vbj4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://qb8327xv7nv6" path="res://Player/StateMachines/chopping_player_state.gd" id="6_tvpqd"]
 [ext_resource type="Script" uid="uid://c4plj1ev8jdpy" path="res://Player/StateMachines/aiming_player_state.gd" id="7_nnnpx"]
 [ext_resource type="Script" uid="uid://dyug67brqmpvx" path="res://Player/StateMachines/jumping_player_state.gd" id="9_5j3b7"]
+[ext_resource type="PackedScene" uid="uid://cueo81ygwc5ve" path="res://Gameplay/depth_gauge.tscn" id="9_8ujlj"]
 [ext_resource type="PackedScene" uid="uid://b18ju06gl2k3g" path="res://GameObjects/Bamboo/bamboo_stalk.tscn" id="10_3yrp4"]
 [ext_resource type="Texture2D" uid="uid://ci47r72g5p3bo" path="res://Player/Animations/balance.png" id="11_dgbnd"]
 [ext_resource type="Script" uid="uid://cjk06adgbhx1b" path="res://Player/StateMachines/win_player_state.gd" id="11_emhqj"]
@@ -1160,6 +1161,7 @@ chop_timer = NodePath("../../ChopTimer")
 
 [node name="AimingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_nnnpx")
+depth_gauge_scene = ExtResource("9_8ujlj")
 
 [node name="JumpingPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("jump_timer")]
 script = ExtResource("9_5j3b7")

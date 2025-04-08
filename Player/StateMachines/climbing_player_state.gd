@@ -34,8 +34,10 @@ func update(delta: float) -> void:
 	elif Input.is_action_just_pressed("jump") and (not is_instance_valid(Player.climbed_stalk) or not Player.climbed_stalk.is_in_water()):
 		Player.jump_target = stalk_root
 		Player.climbed_stalk = null
+		Player.was_on_stalk_pre_jump = true
 		request_transition("JumpingPlayerState")
 	elif Input.is_action_just_pressed("aim"):
+		Player.was_on_stalk_pre_jump = true
 		request_transition("AimingPlayerState")
 	else:
 		super.update(delta)

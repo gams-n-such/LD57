@@ -90,6 +90,7 @@ func get_faced_bamboo() -> BambooStalk:
 
 #region Climbing
 
+var was_on_stalk_pre_jump : bool = false
 var climbed_stalk : BambooStalk = null
 var grounded : bool:
 	get:

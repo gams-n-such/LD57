@@ -40,12 +40,14 @@ func enter(prev_state : State) -> void:
 	jump_start = Player.global_position
 	peak_y = min(jump_start.y, jump_target.y) - calc_overjump()
 	peak_alpha = (1.0 + (-jump_delta_y / MAX_DIFF)) / 2.0
-	if prev_state is ClimbingPlayerState:
+	if Player.was_on_stalk_pre_jump:
 		Player.sprite.play("jumping_start_bamboo")
 		await Player.sprite.animation_finished
 	else:
 		Player.sprite.play("jumping_start_ground")
 		await Player.sprite.animation_finished
+		request_transition("ClimbingPlayerState")
+		return
 	jump_timer.start()
 	interpolating = true
 	Player.sprite.play("jumping_mid")

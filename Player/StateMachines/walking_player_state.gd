@@ -24,6 +24,7 @@ func update(delta: float) -> void:
 		request_transition("ChoppingPlayerState")
 	elif Input.is_action_just_pressed("jump"):
 		if Player.is_facing_a_bamboo():
+			Player.was_on_stalk_pre_jump = false
 			Player.climbed_stalk = Player.get_faced_bamboo()
 			Player.jump_target = Player.climbed_stalk.get_climbing_bottom()
 			request_transition("JumpingPlayerState")
