@@ -2,15 +2,25 @@ class_name AimingMovementState
 extends PlayerMovementState
 
 @export var ignore_player_cell : bool = true
+@export var depth_gauge_scene : PackedScene
+var depth_gauge : DepthGauge = null
 
 var player_cell : Vector2i
-var selected_cell : Vector2i
+var selected_cell : Vector2i:
+	get:
+		return selected_cell
+	set(new_cell):
+		selected_cell = new_cell
+		depth_gauge.measure_cell(selected_cell)
 var available_selection : Array[Vector2i]
 var prev_state_name : String
 
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
+	depth_gauge = depth_gauge_scene.instantiate() as DepthGauge
+	get_tree().root.add_child(depth_gauge)
 	prev_state_name = prev_state.name
+	#Player.was_on_stalk_pre_jump = prev_state_name == "ClimbingPlayerState"
 	var player_field_position := Player.global_position if Player.climbed_stalk == null else Player.climbed_stalk.global_position
 	player_cell = Game.field.global_to_map(player_field_position)
 	available_selection = []
@@ -38,6 +48,7 @@ func update_available_selection() -> void:
 func exit(next_state : State) -> void:
 	clear_selection()
 	Player.on_bamboo_selected.disconnect(_on_player_selected_bamboo)
+	depth_gauge.queue_free()
 	super.exit(next_state)
 
 # TODO: use _process/_physics_process + process mode?
