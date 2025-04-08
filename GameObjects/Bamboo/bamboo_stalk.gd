@@ -12,14 +12,16 @@ var spawned_in_world : bool = false
 var initialized : bool = false
 
 func _ready() -> void:
-	if not initialized:
-		rebuild_stalk()
-		initialized = true
-	if not spawned_in_hand and not spawned_in_world:
-		spawned_in_world = true
-		var curr_cell : Vector2i = Game.field.global_to_map(global_position)
-		length_underwater = Game.field.get_water_depth(curr_cell)
-		plant_at_coords(curr_cell)
+	if not Engine.is_editor_hint():
+		await get_tree().create_timer(0.1).timeout
+		if not initialized:
+			rebuild_stalk()
+			initialized = true
+		if not spawned_in_hand and not spawned_in_world:
+			spawned_in_world = true
+			var curr_cell : Vector2i = Game.field.global_to_map(global_position)
+			length_underwater = Game.field.get_water_depth(curr_cell)
+			plant_at_coords(curr_cell)
 
 func init_from_item(item : BambooItem) -> void:
 	length = item.length

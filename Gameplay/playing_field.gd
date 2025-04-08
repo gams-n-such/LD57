@@ -35,6 +35,7 @@ func _exit_tree() -> void:
 func _ready() -> void:
 	var last_row_pos_local : Vector2 = tilemap.map_to_local(Vector2i.DOWN * last_row)
 	Game.camera.set_field_bottom(to_global(last_row_pos_local).y)
+	%WinZone.position.y = tilemap.map_to_local(Vector2i(2, last_gameplay_row + 1)).y
 	generate_field()
 
 func generate_field() -> void:
@@ -182,7 +183,7 @@ func is_water_cell(coords : Vector2i) -> bool:
 	return tilemap.get_cell_source_id(coords) == 1
 
 func get_water_depth(coords : Vector2i) -> int:
-	if is_water_cell(coords):
+	if is_water_cell(coords) and puddle_depths.has(coords):
 		return puddle_depths[coords]
 	return 0
 

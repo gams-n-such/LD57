@@ -63,12 +63,12 @@ collision_layer = 4
 shape = SubResource("RectangleShape2D_ifmps")
 
 [node name="WinZone" type="Area2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(180, 500)
 collision_layer = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
-position = Vector2(-2, 172)
 shape = SubResource("WorldBoundaryShape2D_rmhtc")
 
 [connection signal="body_entered" from="WinZone" to="." method="_on_win_zone_body_entered"]

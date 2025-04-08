@@ -23,6 +23,9 @@ var current_height : float:
 func enter(prev_state : State) -> void:
 	super.enter(prev_state)
 	current_height = current_height
+	if stalk.length_underwater > stalk.length:
+		request_transition("LosePlayerState")
+		stalk.queue_free()
 
 func exit(next_state : State) -> void:
 	super.exit(next_state)
@@ -56,3 +59,5 @@ func movement_update(delta : float) -> void:
 		Player.sprite.play("climbing_up")
 	else:
 		Player.sprite.play("climbing_idle")
+	if stalk.segments_above_water < 1:
+		Player.sprite.play("balancing")
